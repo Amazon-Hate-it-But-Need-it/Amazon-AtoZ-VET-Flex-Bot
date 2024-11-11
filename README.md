@@ -8,66 +8,70 @@ Auto-login to A to Z portal
 Configurable shift preferences (days, times, shift length)
 Smart filtering based on your criteria
 Cookie persistence to avoid frequent re-authentication
-Random delays and human-like typing simulation to avoid detection
 
 Requirements
 
 Python 3.7+
 Chrome browser
-Windows (tested on Windows 10/11)
 
-Setup Guide
+Installation Steps
+1. Install Python
 
-1. Clone this repository: git clone <https://github.com/Amazon-Hate-it-But-Need-it/Amazon-AtoZ-VET-Flex-Bot> then 
-cd to the directory of the python script
+Download Python from python.org
+Run the installer
+Make sure to check "Add Python to PATH" during installation
 
-2. Install required packages:
-pip install selenium undetected-chromedriver and 
-pip install setuptools
+2. Download Required Libraries
 
-3. Configure your settings in the script:
-
-Set CHROME_PROFILE_DIRECTORY_PATH to your Chrome user data directory or create a new folder and set the directory of that folder as the CHROME_PROFILE_DIRECTORY_PATH
-Update USERNAME and PASSWORD with your A to Z credentials
-Adjust shift preferences:
-
-NUMBER_OF_DAYS: How many days ahead to look for shifts (default: 8)
-EARLIEST_TIME and LATEST_TIME: Your preferred shift time range (format: "HH:MM")
-LONGEST_SHIFT: Maximum shift length in hours
-WEEKDAYS: List of days you're willing to work. 
-HOURS_TO_RUN: How long the script should run
-SECONDS_BETWEEN_CHECKS: Delay between shift checks
+Make a new text file on your desktop
+Copy and paste these package names, each on a new line:
 
 
+selenium  
+undetected-chromedriver  
+setuptools  
+
+Save it as requirements.txt
+Right-click the file and select "Open in Terminal" or "Open PowerShell window here"
+Type: pip install -r requirements.txt
+Press Enter and wait for installation to complete
+
+If you get any errors, try running these commands in the terminal one at a time:  
+pip install selenium  
+pip install undetected-chromedriver  
+pip install setuptools  
+3. Set Up the Script
+
+Download the script and save it somewhere easy to find
+Open it with Notepad or any text editor
+Find these settings near the top and change them to match your preferences:
+
+USERNAME = "your_username"     # Your A to Z login  
+PASSWORD = "your_password"     # Your A to Z password  
+EARLIEST_TIME = "10:00"       # Earliest shift you'll take  
+LATEST_TIME = "18:00"         # Latest shift you'll take  
+LONGEST_SHIFT = 8             # Max hours you'll work  
+WEEKDAYS = [                  # Days you want to work  
+"Monday",  
+"Tuesday",  
+"Wednesday",  
+"Thursday",  
+"Friday"  
+]
+HOURS_TO_RUN = 3             # How many hours to run the script  
+4. Run the Script
+
+Double-click the Python file
+A Chrome window will open and log into A to Z
+If asked to verify your identity:
+
+Click the verification option
+Enter the code sent to you
+Check "Remember this device"
 
 
-
-Usage
-
-1. Run the script
-2. The script will:
-
-Open Chrome and navigate to A to Z
-Log in using your credentials
-Handle any verification prompts
-Start monitoring for shifts matching your criteria
-Automatically attempt to claim matching shifts
-Continue running for the specified duration
+The script will start looking for shifts that match your settings
 
 
-
-Customization Tips
-
-Adjust STALL_AFTER_LOGIN if the page takes longer to load
-Modify typing and click delays in delay_typing() and wait_and_click() methods
-Add additional shift criteria by modifying the find_shifts() method
-
-Troubleshooting
-
-Chrome Won't Launch: Make sure your Chrome profile path is correct
-Login Fails: Double-check credentials and watch for CAPTCHA/verification
-Shifts Not Found: Verify your time preferences and ensure you're looking at the right days
-Script Crashes: Check Chrome is updated and try clearing browser data
-
-Contributing
-Feel free to submit issues and pull requests for improvements!
+Need Help?
+Feel free to open an issue on GitHub if you run into problems!
