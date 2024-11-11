@@ -18,11 +18,11 @@ Windows (tested on Windows 10/11)
 
 Setup Guide
 
-1. Clone this repository: git clone <https://github.com/Amazon-Hate-it-But-Need-it/Amazon-AtoZ-VET-Flex-Bot>
+1. Clone this repository: git clone <https://github.com/Amazon-Hate-it-But-Need-it/Amazon-AtoZ-VET-Flex-Bot> then 
 cd to the directory of the python script
 
 2. Install required packages:
-pip install selenium undetected-chromedriver
+pip install selenium undetected-chromedriver and 
 pip install setuptools
 
 3. Configure your settings in the script:
