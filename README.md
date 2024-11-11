@@ -35,8 +35,7 @@ Save it as requirements.txt
 Right-click the file and select "Open in Terminal" or "Open PowerShell window here"  
 Type: pip install -r requirements.txt  
 Press Enter and wait for installation to complete  
-
-If you get any errors, try running these commands in the terminal one at a time:  
+or  run these commands in the terminal one at a time:  
 pip install selenium  
 pip install undetected-chromedriver  
 pip install setuptools  
