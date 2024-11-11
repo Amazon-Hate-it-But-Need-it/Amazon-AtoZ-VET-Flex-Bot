@@ -2,9 +2,9 @@ STALL_AFTER_LOGIN = 6
 
 NUMBER_OF_DAYS = 14
 
-EARLIEST_TIME = "12:16pm"
+EARLIEST_TIME = ""
 
-LATEST_TIME = "12:44am"
+LATEST_TIME = ""
 
 LONGEST_SHIFT = 8
 
@@ -19,9 +19,11 @@ WEEKDAYS = [
 ]
 
 
-CHROME_PROFILE_DIRECTORY_PATH = r"Chrome user profile directory goes here"
+CHROME_PROFILE_DIRECTORY_PATH = r"C:\Users\Administrator\Documents"
 
-LOGIN_URL = "https://atoz.amazon.work"
+LOGIN_URL = "https://atoz-login.amazon.work"
+
+Amazon_Login = "Example"
 
 USERNAME = "AtoZ username goes here"
 
@@ -29,16 +31,17 @@ PASSWORD = "AtoZ password goes here"
 
 HOURS_TO_RUN = 3  # Hours
 
-SECONDS_BETWEEN_CHECKS = 30
+SECONDS_BETWEEN_CHECKS = 5
 
 import time
+import random
 import undetected_chromedriver as uc
 import json
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 
 class Browser:
@@ -47,19 +50,42 @@ class Browser:
         self.options = ChromeOptions()
         self.options.add_argument(f"--user-data-dir={CHROME_PROFILE_DIRECTORY_PATH}")
         self.driver = uc.Chrome(options=self.options)
-        self.driver.get("https://atoz.amazon.work")
+        self.driver.get("https://atoz-login.amazon.work")
+
+    def wait_and_click(self, element):
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(element))
+        time.sleep(random.uniform(0.3, 0.7))
+        element.click()
+
+    def delay_typing(self, element, text):
+        for char in text:
+            element.send_keys(char)
+            time.sleep(random.uniform(0.05, 0.015))
+                                              
 
     def login(self):
-        uname = self.driver.find_element(By.XPATH, "//input[@id='login']")
-        uname.send_keys(USERNAME)
-        pword = self.driver.find_element(By.XPATH, "//input[@id='password']")
-        pword.send_keys(PASSWORD)
+        uname = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//*[@id='associate-login-input']"))
+        )
+        self.delay_typing(uname, Amazon_Login)
+
+        
+        login_button = self.driver.find_element(By.XPATH, "//*[@id='login-form-login-btn']")
+        self.wait_and_click(login_button)
+
+        
+        pword = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//input[@id='password']"))
+        )
+        self.delay_typing(pword, PASSWORD)
+
+        
         submit = self.driver.find_element(By.XPATH, "//button[@id='buttonLogin']")
-        submit.click()
+        self.wait_and_click(submit)
         time.sleep(STALL_AFTER_LOGIN)
 
     def authenticate(self):
-        element = self.driver.find_element(By.XPATH, "//input[@value='1']")
+        element = self.driver.find_element(By.XPATH, "//input[@value='0']")
         element.click()
         button = self.driver.find_element(By.XPATH, "//button[@id='buttonContinue']")
         button.click()
