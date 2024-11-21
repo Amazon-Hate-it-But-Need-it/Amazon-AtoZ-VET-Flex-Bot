@@ -1,6 +1,6 @@
-STALL_AFTER_LOGIN = 6
+STALL_AFTER_LOGIN = 10
 
-NUMBER_OF_DAYS = 14
+NUMBER_OF_DAYS = 7
 
 EARLIEST_TIME = ""
 
@@ -9,25 +9,25 @@ LATEST_TIME = ""
 LONGEST_SHIFT = 8
 
 WEEKDAYS = [
-"Monday",
-"Tuesday",
-"Wednesday",
-"Thursday",
-"Friday",
-"Saturday",
-"Sunday"
+#"Monday",
+#"Tuesday",
+#"Wednesday",
+#"Thursday",
+#Friday",
+#"Saturday",
+#"Sunday"
 ]
 
 
-CHROME_PROFILE_DIRECTORY_PATH = r"C:\Users\Administrator\Documents"
+CHROME_PROFILE_DIRECTORY_PATH = r"Chrome Profile Directory Goes Here"
 
 LOGIN_URL = "https://atoz-login.amazon.work"
 
-Amazon_Login = "Example"
+Amazon_Login = "AtoZ Username Here"
 
-USERNAME = "AtoZ username goes here"
+USERNAME = "AtoZ Username Here"
 
-PASSWORD = "AtoZ password goes here"
+PASSWORD = "Atoz Password Here"
 
 HOURS_TO_RUN = 3  # Hours
 
@@ -89,7 +89,7 @@ class Browser:
         element.click()
         button = self.driver.find_element(By.XPATH, "//button[@id='buttonContinue']")
         button.click()
-        time.sleep(4)
+        time.sleep(40)
 
 
     def stall_until_solved(self):
@@ -98,7 +98,7 @@ class Browser:
                 header = self.driver.find_element(By.XPATH, "//h1[@class='top-h1']")
                 if "Verify your identity" in header.text:
                     self.driver.find_element(By.XPATH, "//input[@id='code']")
-                    time.sleep(10)
+                    time.sleep(300)
             except:
                 break
 
@@ -120,14 +120,14 @@ class Browser:
 
 
     def back_home(self):
-        link = self.driver.find_element(By.XPATH, "//ul[contains(@class, 'navbar-left')]/li[@class='active']/a")
+        link = self.driver.find_element(By.XPATH, "//*[@id='navbar-menu']/ul[1]/li[1]/a")
         link.click()
 
 
     def find_shifts(self):
         button = self.driver.find_element(By.XPATH, "//button[@data-testid='FindShiftsQuickLink']")
         button.click()
-        time.sleep(2)
+        time.sleep(10)
         for i, element in enumerate(self.driver.find_elements(By.XPATH, "//div[@data-test-id='day-card']")):
             if i > NUMBER_OF_DAYS:
                 break
