@@ -3,10 +3,10 @@ A Python script that automatically monitors and claims available VET/Flex shifts
 
 Features:  
 
-Auto-login to A to Z portal
-Configurable shift preferences (days, times, shift length)
-Smart filtering based on your criteria
-Cookie persistence to avoid frequent re-authentication
+ Auto-login to A to Z portal   
+ Configurable shift preferences (days, times, shift length)   
+ Smart filtering based on your criteria   
+ Cookie persistence to avoid frequent re-authentication   
 
 Requirements
 
