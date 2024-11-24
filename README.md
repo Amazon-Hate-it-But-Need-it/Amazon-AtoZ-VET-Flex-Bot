@@ -66,7 +66,7 @@ SECONDS_BETWEEN_CHECKS = 5
 
 4. Create the Chrome Profile Directory Folder  
    Create a new folder anywhere.  
-   Copy the directory of that folder on this line of the code: CHROME_PROFILE_DIRECTORY_PATH = r"Chrome Profile Directory goes here"
+   Copy the directory of that folder on this line of the code: CHROME_PROFILE_DIRECTORY_PATH = r"Chrome Profile Directory goes here"   
    Save changes
 
 6. Run the Script  
@@ -76,12 +76,15 @@ SECONDS_BETWEEN_CHECKS = 5
    If asked to verify your identity:  
 
 Click the verification option  
-Enter the code sent to you  
+Enter the code sent to you   
 Check "Remember this device"  
-
-
 The script will start looking for shifts that match your settings  
 
+Filing a Feature Request:   
+Click on the "Issues" tab at the top of the repository.   
+Click the green "New Issue" button.   
+Click on "Labels" on the right, choose the "Enhancementt" template to suggest improvements/features    .
+Describe your feature request in detail and submit the issue.   
 
 Need Help?
 Feel free to open an issue on GitHub if you run into problems!  
