@@ -1,4 +1,4 @@
-STALL_AFTER_LOGIN = 10
+STALL_AFTER_LOGIN = 10 #
 
 NUMBER_OF_DAYS = 7
 
@@ -31,7 +31,7 @@ PASSWORD = "Atoz Password Here"
 
 HOURS_TO_RUN = 3  # Hours
 
-SECONDS_BETWEEN_CHECKS = 5
+SECONDS_BETWEEN_CHECKS = 5 # Can be adjusted to reduce wait times between checks for available shifts.
 
 import time
 import random
@@ -127,7 +127,7 @@ class Browser:
     def find_shifts(self):
         button = self.driver.find_element(By.XPATH, "//button[@data-testid='FindShiftsQuickLink']")
         button.click()
-        time.sleep(10)
+        time.sleep(10) # Can be adjusted to reduce/increase wait times between checks for available shifts
         for i, element in enumerate(self.driver.find_elements(By.XPATH, "//div[@data-test-id='day-card']")):
             if i > NUMBER_OF_DAYS:
                 break
@@ -150,7 +150,7 @@ class Browser:
                             if day in WEEKDAYS:
                                 # view_details.click()
                                 add_shift.click()
-                                time.sleep(2)
+                                time.sleep(2) # Can be changed to reduce/increase wait times between checks for available shifts
                                 button = self.driver.find_element(By.XPATH, "//button[@data-test-id='AddOpportunityModalSuccessDoneButton']")
                                 button.click()
                 except Exception as ex:
@@ -196,7 +196,7 @@ def main():
         browser.back_home()
         done = time.time()
         while time.time() - done < SECONDS_BETWEEN_CHECKS:
-            time.sleep(5)
+            time.sleep(5) # Can be adjusted to reduce/increase wait times between checks for available shifts
     browser.exit()
 
 if __name__ == "__main__":
