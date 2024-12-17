@@ -125,7 +125,7 @@ class Browser:
 
 
     def find_shifts(self):
-        button = self.driver.find_element(By.XPATH, "//button[@data-testid='FindShiftsQuickLink']")
+        button = self.driver.find_element(By.XPATH, '//*[@id="atoz-app-root"]/div[1]/div[2]/div/div[2]/div[1]/div/a[1]')
         button.click()
         time.sleep(10) # Seconds to wait before beginning to check for available shifts once on the shift management page
         for i, element in enumerate(self.driver.find_elements(By.XPATH, "//div[@data-test-id='day-card']")):
